@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import illustration from "../assets/lms.png";
+
 import "./Login.css";
 
 function detectRole(username) {
@@ -52,6 +54,12 @@ export default function Login() {
       </header>
 
       <div className="login-container">
+        {/* LEFT IMAGE */}
+        <div className="side-illustration">
+          <img src={illustration} alt="LMS illustration" />
+        </div>
+
+        {/* RIGHT LOGIN CARD */}
         <div className="login-card">
           <h2>Login to Your Account</h2>
           <h3>Enter your credentials</h3>
@@ -70,21 +78,21 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <div 
-              style={{ 
-                textAlign: "right", 
-                marginBottom: "18px", 
-                marginTop: "-10px" 
+            <div
+              style={{
+                textAlign: "right",
+                marginBottom: "18px",
+                marginTop: "-10px",
               }}
             >
-              <a 
-                href="#forgot-password" 
+              <a
+                href="#forgot-password"
                 onClick={handleForgotPassword}
                 style={{
                   fontSize: "14px",
                   color: "#3f51b5",
                   textDecoration: "none",
-                  cursor: "pointer"
+                  cursor: "pointer",
                 }}
               >
                 Forgot Password?
@@ -93,30 +101,32 @@ export default function Login() {
             <button type="submit">Login</button>
           </form>
 
-          <div 
-            style={{ 
-              textAlign: "center", 
-              marginTop: "20px", 
-              paddingTop: "20px", 
-              borderTop: "1px solid #e0e0e0" 
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "20px",
+              paddingTop: "20px",
+              borderTop: "1px solid #e0e0e0",
             }}
           >
-            <p style={{ 
-              fontSize: "14px", 
-              color: "#666", 
-              marginBottom: "10px" 
-            }}>
+            <p
+              style={{
+                fontSize: "14px",
+                color: "#666",
+                marginBottom: "10px",
+              }}
+            >
               Don't have an account?
             </p>
-            <a 
-              href="#register" 
+            <a
+              href="#register"
               onClick={handleRegister}
               style={{
                 fontSize: "14px",
                 color: "#3f51b5",
                 textDecoration: "none",
                 cursor: "pointer",
-                fontWeight: "500"
+                fontWeight: "500",
               }}
             >
               Register

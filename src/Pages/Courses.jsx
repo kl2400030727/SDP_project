@@ -1,6 +1,16 @@
 import React from "react";
 import BasePage from "./BasePage";
 
+// Import images directly
+import dbmsImage from '../assets/dbms.png';
+import oopsImage from '../assets/oops.png';
+import fedImage from '../assets/fed.png';
+import psImage from '../assets/ps.png';
+import oseImage from '../assets/ose.png';
+import osImage from '../assets/os.png';
+import aimlImage from '../assets/aiml.png';
+import lmsImage from '../assets/lms.png';
+
 function Courses() {
   const courses = [
     {
@@ -12,7 +22,8 @@ function Courses() {
       rating: 4,
       progress: 75,
       duration: "8 weeks",
-      level: "Intermediate"
+      level: "Intermediate",
+      image: dbmsImage
     },
     {
       id: 2,
@@ -23,7 +34,8 @@ function Courses() {
       rating: 4,
       progress: 60,
       duration: "10 weeks",
-      level: "Beginner"
+      level: "Beginner",
+      image: oopsImage
     },
     {
       id: 3,
@@ -34,7 +46,8 @@ function Courses() {
       rating: 4,
       progress: 90,
       duration: "12 weeks",
-      level: "Intermediate"
+      level: "Intermediate",
+      image: fedImage
     },
     {
       id: 4,
@@ -45,7 +58,8 @@ function Courses() {
       rating: 4,
       progress: 30,
       duration: "6 weeks",
-      level: "Advanced"
+      level: "Advanced",
+      image: psImage
     },
     {
       id: 5,
@@ -56,7 +70,8 @@ function Courses() {
       rating: 4,
       progress: 25,
       duration: "8 weeks",
-      level: "Intermediate"
+      level: "Intermediate",
+      image: oseImage
     },
     {
       id: 6,
@@ -67,7 +82,8 @@ function Courses() {
       rating: 5,
       progress: 85,
       duration: "10 weeks",
-      level: "Advanced"
+      level: "Advanced",
+      image: osImage
     },
     {
       id: 7,
@@ -78,9 +94,21 @@ function Courses() {
       rating: 5,
       progress: 40,
       duration: "14 weeks",
-      level: "Advanced"
+      level: "Advanced",
+      image: aimlImage
     }
   ];
+
+  // Debug function to check if images are loading
+  const handleImageError = (e, courseTitle) => {
+    console.error(`Failed to load image for: ${courseTitle}`, e.target.src);
+    e.target.src = lmsImage;
+    e.target.alt = `Fallback image for ${courseTitle}`;
+  };
+
+  const handleImageLoad = (e, courseTitle) => {
+    console.log(`Successfully loaded image for: ${courseTitle}`);
+  };
 
   return (
     <BasePage 
@@ -91,6 +119,13 @@ function Courses() {
       <div className="courses-grid">
         {courses.map(course => (
           <div key={course.id} className="course-card">
+            <img 
+              src={course.image} 
+              alt={course.title}
+              className="course-image"
+              onError={(e) => handleImageError(e, course.title)}
+              onLoad={(e) => handleImageLoad(e, course.title)}
+            />
             <div className="course-header">
               <div className="course-provider">{course.provider}</div>
               <span className={`course-level ${course.level.toLowerCase()}`}>
@@ -101,8 +136,8 @@ function Courses() {
               <h3>{course.title}</h3>
               <p>{course.description}</p>
               <div className="course-meta">
-                <span className="instructor">👤 {course.instructor}</span>
-                <span className="duration">⏱️ {course.duration}</span>
+                <span className="course-instructor">👤 {course.instructor}</span>
+                <span className="course-duration">⏱️ {course.duration}</span>
               </div>
               <div className="course-rating">
                 {"★".repeat(course.rating)}{"☆".repeat(5 - course.rating)}

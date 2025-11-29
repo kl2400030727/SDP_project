@@ -11,8 +11,8 @@
 }
 
 .stat-card {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: #e3f2fd; /* Sky blue background */
+  border: 1px solid #bbdefb; /* Light blue border */
   border-radius: 10px;
   padding: 20px;
   display: flex;
@@ -33,8 +33,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
+  background: #bbdefb; /* Light blue background for icons */
   border-radius: 50%;
+  color: #1976d2; /* Blue icon color */
 }
 
 .stat-content h3 {
@@ -47,7 +48,7 @@
 .stat-value {
   font-size: 24px;
   font-weight: 700;
-  color: #3f51b5;
+  color: #1976d2; /* Blue color for values */
 }
 
 /* Exams Section */
@@ -98,8 +99,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #e0e0e0;
+  background: #e3f2fd; /* Sky blue background */
+  border-bottom: 1px solid #bbdefb; /* Light blue border */
 }
 
 .exam-type {
@@ -109,6 +110,7 @@
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
+  color: #1976d2; /* Blue text color */
 }
 
 .exam-icon {
@@ -183,8 +185,9 @@
   gap: 15px;
   margin-bottom: 15px;
   padding: 10px;
-  background: #f8f9fa;
+  background: #e3f2fd; /* Sky blue background */
   border-radius: 6px;
+  border: 1px solid #bbdefb; /* Light blue border */
 }
 
 .meta-item {
@@ -192,7 +195,7 @@
 }
 
 .meta-item strong {
-  color: #3f51b5;
+  color: #1976d2; /* Blue color for strong text */
 }
 
 .preparation-section {
@@ -218,15 +221,17 @@
   height: 100%;
   border-radius: 10px;
   transition: width 0.3s ease;
+  background: #1976d2; /* Blue progress bar */
 }
 
 .countdown {
   text-align: center;
   padding: 8px 12px;
-  background: #f8f9fa;
+  background: #e3f2fd; /* Sky blue background */
   border-radius: 6px;
   font-size: 13px;
   font-weight: 600;
+  border: 1px solid #bbdefb; /* Light blue border */
 }
 
 .today {
@@ -240,17 +245,18 @@
 }
 
 .days-left {
-  color: #4caf50;
+  color: #1976d2; /* Blue color for days left */
 }
 
 .view-results {
   text-align: center;
-  color: #3f51b5;
+  color: #1976d2; /* Blue color for view results */
   font-weight: 600;
   font-size: 14px;
   padding: 10px;
   border-top: 1px solid #e0e0e0;
   margin-top: 10px;
+  background: #e3f2fd; /* Sky blue background */
 }
 
 /* Exam Modal */
@@ -284,7 +290,7 @@
   align-items: flex-start;
   padding: 20px;
   border-bottom: 1px solid #e0e0e0;
-  background: #f8f9fa;
+  background: #e3f2fd; /* Sky blue background */
   border-radius: 12px 12px 0 0;
 }
 
@@ -301,6 +307,7 @@
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
+  background: #1976d2; /* Blue background for badges */
 }
 
 .modal-header h3 {
@@ -325,7 +332,7 @@
 }
 
 .close-modal:hover {
-  background: #e0e0e0;
+  background: #bbdefb; /* Light blue hover */
 }
 
 .modal-body {
@@ -338,15 +345,16 @@
   gap: 10px;
   margin-bottom: 25px;
   padding: 15px;
-  background: #f8f9fa;
+  background: #e3f2fd; /* Sky blue background */
   border-radius: 8px;
+  border: 1px solid #bbdefb; /* Light blue border */
 }
 
 .overview-item {
   display: flex;
   justify-content: space-between;
   padding: 5px 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #bbdefb; /* Light blue border */
 }
 
 .overview-item:last-child {
@@ -370,12 +378,13 @@
 }
 
 .topic-tag {
-  background: #e3f2fd;
-  color: #1976d2;
+  background: #e3f2fd; /* Sky blue background */
+  color: #1976d2; /* Blue text */
   padding: 6px 12px;
   border-radius: 15px;
   font-size: 12px;
   font-weight: 600;
+  border: 1px solid #bbdefb; /* Light blue border */
 }
 
 .instructions-list {
@@ -392,8 +401,9 @@
 .preparation-section-modal {
   margin-bottom: 25px;
   padding: 15px;
-  background: #f8f9fa;
+  background: #e3f2fd; /* Sky blue background */
   border-radius: 8px;
+  border: 1px solid #bbdefb; /* Light blue border */
 }
 
 .preparation-section-modal h4 {
@@ -423,12 +433,12 @@
 }
 
 .study-btn {
-  background: #3f51b5;
+  background: #1976d2; /* Blue background */
   color: white;
 }
 
 .study-btn:hover {
-  background: #5c6bc0;
+  background: #1565c0;
 }
 
 .practice-btn {
@@ -468,12 +478,12 @@
 }
 
 .primary-btn {
-  background: #3f51b5;
+  background: #1976d2; /* Blue background */
   color: white;
 }
 
 .primary-btn:hover {
-  background: #5c6bc0;
+  background: #1565c0;
 }
 
 .secondary-btn {

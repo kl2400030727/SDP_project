@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Portal.css";
+import portalImage from "../assets/lms1.png";
 
 function Portal() {
   const navigate = useNavigate();
@@ -8,8 +9,11 @@ function Portal() {
   const [showProfile, setShowProfile] = useState(false);
 
   // Get user data from localStorage (from registration) or use default data
-  const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-  const currentUser = registeredUsers.find(user => user.username === username) || {};
+  const registeredUsers = JSON.parse(
+    localStorage.getItem("registeredUsers") || "[]"
+  );
+  const currentUser =
+    registeredUsers.find((user) => user.username === username) || {};
 
   // Default student data for K Snehitha
   const defaultStudentData = {
@@ -28,7 +32,7 @@ function Portal() {
     city: "Hyderabad",
     state: "Telangana",
     zipCode: "500032",
-    country: "India"
+    country: "India",
   };
 
   // Merge default data with registered user data
@@ -42,7 +46,7 @@ function Portal() {
   };
 
   const toggleProfile = () => {
-    setShowProfile(!showProfile);
+    setShowProfile((prev) => !prev);
   };
 
   // Course Section Navigation
@@ -60,7 +64,8 @@ function Portal() {
   const navigateToPracticeTests = () => navigate("/practice-tests");
 
   // Assignments Section Navigation
-  const navigateToPendingAssignments = () => navigate("/pending-assignments");
+  const navigateToPendingAssignments = () =>
+    navigate("/pending-assignments");
 
   return (
     <div className="portal-container">
@@ -70,23 +75,33 @@ function Portal() {
           <h1>Learning Management System</h1>
           <div className="user-info">
             <span>Welcome, {username}</span>
-            
-            {/* Profile Icon */}
+
+            {/* Profile Icon + Dropdown */}
             <div className="profile-container">
               <div className="profile-icon" onClick={toggleProfile}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                 </svg>
               </div>
-              
-              {/* Profile Dropdown */}
+
               {showProfile && (
                 <div className="profile-dropdown">
                   <div className="profile-header">
                     <h3>Student Profile</h3>
-                    <button className="close-profile" onClick={toggleProfile}>×</button>
+                    <button
+                      type="button"
+                      className="close-profile"
+                      onClick={toggleProfile}
+                    >
+                      ×
+                    </button>
                   </div>
-                  
+
                   <div className="profile-content">
                     <div className="profile-section">
                       <h4>Personal Information</h4>
@@ -99,23 +114,33 @@ function Portal() {
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">Student ID:</span>
-                          <span className="detail-value">{studentData.studentId}</span>
+                          <span className="detail-value">
+                            {studentData.studentId}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">Email:</span>
-                          <span className="detail-value">{studentData.email}</span>
+                          <span className="detail-value">
+                            {studentData.email}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">Phone:</span>
-                          <span className="detail-value">{studentData.phone}</span>
+                          <span className="detail-value">
+                            {studentData.phone}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">Date of Birth:</span>
-                          <span className="detail-value">{studentData.dateOfBirth}</span>
+                          <span className="detail-value">
+                            {studentData.dateOfBirth}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">Gender:</span>
-                          <span className="detail-value">{studentData.gender}</span>
+                          <span className="detail-value">
+                            {studentData.gender}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -125,19 +150,29 @@ function Portal() {
                       <div className="profile-details">
                         <div className="detail-row">
                           <span className="detail-label">Course:</span>
-                          <span className="detail-value">{studentData.course}</span>
+                          <span className="detail-value">
+                            {studentData.course}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">Semester:</span>
-                          <span className="detail-value">Semester {studentData.semester}</span>
+                          <span className="detail-value">
+                            Semester {studentData.semester}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">Department:</span>
-                          <span className="detail-value">{studentData.department}</span>
+                          <span className="detail-value">
+                            {studentData.department}
+                          </span>
                         </div>
                         <div className="detail-row">
-                          <span className="detail-label">Enrollment Date:</span>
-                          <span className="detail-value">{studentData.enrollmentDate}</span>
+                          <span className="detail-label">
+                            Enrollment Date:
+                          </span>
+                          <span className="detail-value">
+                            {studentData.enrollmentDate}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -147,23 +182,33 @@ function Portal() {
                       <div className="profile-details">
                         <div className="detail-row">
                           <span className="detail-label">Address:</span>
-                          <span className="detail-value">{studentData.address}</span>
+                          <span className="detail-value">
+                            {studentData.address}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">City:</span>
-                          <span className="detail-value">{studentData.city}</span>
+                          <span className="detail-value">
+                            {studentData.city}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">State:</span>
-                          <span className="detail-value">{studentData.state}</span>
+                          <span className="detail-value">
+                            {studentData.state}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">ZIP Code:</span>
-                          <span className="detail-value">{studentData.zipCode}</span>
+                          <span className="detail-value">
+                            {studentData.zipCode}
+                          </span>
                         </div>
                         <div className="detail-row">
                           <span className="detail-label">Country:</span>
-                          <span className="detail-value">{studentData.country}</span>
+                          <span className="detail-value">
+                            {studentData.country}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -172,7 +217,9 @@ function Portal() {
               )}
             </div>
 
-            <button onClick={handleLogout} className="logout-btn">Logout</button>
+            <button onClick={handleLogout} className="logout-btn">
+              Logout
+            </button>
           </div>
         </div>
       </header>
@@ -205,16 +252,17 @@ function Portal() {
           <div className="sidebar-section">
             <h3>Assignments</h3>
             <ul>
-              <li onClick={navigateToPendingAssignments}>Pending Assignments</li>
+              <li onClick={navigateToPendingAssignments}>
+                Pending Assignments
+              </li>
             </ul>
           </div>
         </aside>
 
-        {/* Empty Main Content */}
+        {/* Main Content: only image */}
         <main className="main-content">
-          <div className="empty-state">
-            <h2>Select an option from the sidebar</h2>
-            <p>Choose a menu item to view its content</p>
+          <div className="portal-image-wrapper">
+            <img src={portalImage} alt="LMS illustration" />
           </div>
         </main>
       </div>

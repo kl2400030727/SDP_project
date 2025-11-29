@@ -1,11 +1,11 @@
 .portal-container {
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #e0f7fa 0%, #fce4ec 100%);
 }
 
 /* Header Styles */
 .portal-header {
-  background: linear-gradient(135deg, #1a237e 0%, #3f51b5 100%);
+  background: linear-gradient(135deg, #1a237e 0%, #ad1457 100%);
   color: white;
   padding: 15px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -81,7 +81,7 @@
 }
 
 .profile-header {
-  background: linear-gradient(135deg, #1a237e 0%, #3f51b5 100%);
+  background: linear-gradient(135deg, #1a237e 0%, #ad1457 100%);
   color: white;
   padding: 15px 20px;
   border-radius: 12px 12px 0 0;
@@ -133,7 +133,7 @@
 }
 
 .profile-section h4 {
-  color: #1a237e;
+  color: #ad1457;
   margin: 0 0 12px 0;
   font-size: 16px;
   font-weight: 600;
@@ -213,12 +213,12 @@
 }
 
 .sidebar-section h3 {
-  color: #1a237e;
+  color: #ad1457;
   margin-bottom: 15px;
   font-size: 16px;
   font-weight: 600;
   padding-bottom: 8px;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 2px solid #fce4ec;
 }
 
 .sidebar-section ul {
@@ -237,8 +237,8 @@
 }
 
 .sidebar-section li:hover {
-  color: #3f51b5;
-  background-color: #f8f9ff;
+  color: #ad1457;
+  background-color: #fce4ec;
   padding-left: 10px;
   border-radius: 4px;
 }
@@ -247,7 +247,7 @@
   border-bottom: none;
 }
 
-/* Empty Main Content */
+/* Main Content with big image */
 .main-content {
   background: white;
   border-radius: 12px;
@@ -255,22 +255,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
+  min-height: 500px;       /* taller area */
+  padding: 20px;           /* inner spacing */
 }
 
-.empty-state {
-  text-align: center;
-  color: #666;
+/* Wrapper fills space */
+.portal-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.empty-state h2 {
-  color: #1a237e;
-  margin-bottom: 10px;
-}
-
-.empty-state p {
-  margin: 0;
-  font-size: 16px;
+/* Large image */
+.portal-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;       /* controls maximum width inside card */
+  object-fit: contain;     /* keep aspect ratio */
+  border-radius: 16px;
 }
 
 /* Responsive Design */
@@ -278,11 +282,11 @@
   .portal-main {
     grid-template-columns: 1fr;
   }
-  
+
   .sidebar {
     position: static;
   }
-  
+
   .profile-dropdown {
     width: 350px;
     right: -50px;
@@ -295,22 +299,22 @@
     gap: 10px;
     text-align: center;
   }
-  
+
   .user-info {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .profile-dropdown {
     width: 300px;
     right: -80px;
   }
-  
+
   .detail-row {
     flex-direction: column;
     gap: 2px;
   }
-  
+
   .detail-value {
     text-align: left;
     margin-left: 0;
@@ -322,7 +326,7 @@
     width: 280px;
     right: -100px;
   }
-  
+
   .profile-content {
     padding: 15px;
   }
