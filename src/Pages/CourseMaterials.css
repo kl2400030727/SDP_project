@@ -1,0 +1,415 @@
+.course-materials-container {
+  padding: 0;
+}
+
+.materials-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.material-course-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.material-course-card.expanded {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.material-course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  cursor: pointer;
+  background: #f8f9fa;
+  transition: background 0.3s ease;
+}
+
+.material-course-header:hover {
+  background: #f1f3f4;
+}
+
+.material-course-info {
+  flex: 1;
+}
+
+.material-course-provider {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.material-course-info h3 {
+  margin: 0 0 8px 0;
+  color: #1a237e;
+  font-size: 18px;
+}
+
+.material-course-info p {
+  margin: 0 0 12px 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.material-course-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  color: #666;
+}
+
+.material-course-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: 120px;
+}
+
+.progress-section {
+  text-align: right;
+}
+
+.progress-bar {
+  background: #e0e0e0;
+  border-radius: 8px;
+  height: 6px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  width: 100px;
+}
+
+.progress-fill {
+  background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  color: #666;
+  font-size: 11px;
+}
+
+.expand-btn {
+  background: #3f51b5;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.expand-btn:hover {
+  background: #5c6bc0;
+}
+
+/* Sessions Container */
+.sessions-container {
+  border-top: 1px solid #e0e0e0;
+  background: white;
+}
+
+.sessions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sessions-header h4 {
+  margin: 0;
+  color: #1a237e;
+  font-size: 16px;
+}
+
+.sessions-header span {
+  color: #666;
+  font-size: 14px;
+}
+
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.session-card {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.session-card:hover {
+  border-color: #3f51b5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.session-card.completed {
+  border-left: 4px solid #4caf50;
+}
+
+.session-card.video {
+  border-left: 4px solid #2196f3;
+}
+
+.session-card.assignment {
+  border-left: 4px solid #ff9800;
+}
+
+.session-number {
+  font-size: 11px;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.session-card h5 {
+  margin: 0 0 10px 0;
+  color: #1a237e;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.session-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.session-type.video {
+  color: #2196f3;
+  font-weight: 600;
+}
+
+.session-type.assignment {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+.session-status {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.completed-badge {
+  background: #4caf50;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.start-session-btn {
+  background: #3f51b5;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.start-session-btn:hover {
+  background: #5c6bc0;
+}
+
+/* Session Modal */
+.session-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #1a237e;
+  font-size: 18px;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.close-modal:hover {
+  background: #e0e0e0;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.session-details {
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.status-completed {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+.session-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.watch-btn, .start-assignment-btn, .download-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s;
+  flex: 1;
+  min-width: 120px;
+}
+
+.watch-btn, .start-assignment-btn {
+  background: #3f51b5;
+  color: white;
+}
+
+.watch-btn:hover, .start-assignment-btn:hover {
+  background: #5c6bc0;
+}
+
+.download-btn {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+
+.download-btn:hover {
+  background: #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .material-course-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .material-course-actions {
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .sessions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .session-actions {
+    flex-direction: column;
+  }
+  
+  .watch-btn, .start-assignment-btn, .download-btn {
+    flex: none;
+    width: 100%;
+  }
+}
+
+.empty-content {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-content h3 {
+  color: #1a237e;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.empty-content p {
+  font-size: 16px;
+  margin: 0;
+}

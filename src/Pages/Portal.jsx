@@ -1,96 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Portal.css";
 
-export default function Portal() {
+function Portal() {
   const navigate = useNavigate();
-  const username = localStorage.getItem("username") || "Student";
-  const userRole = localStorage.getItem("userRole") || "student";
+  const username = localStorage.getItem("username") || "2400030727";
+  const [showProfile, setShowProfile] = useState(false);
+
+  // Get user data from localStorage (from registration) or use default data
+  const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+  const currentUser = registeredUsers.find(user => user.username === username) || {};
+
+  // Default student data for K Snehitha
+  const defaultStudentData = {
+    firstName: "K",
+    lastName: "Snehitha",
+    studentId: "2400030727",
+    email: "2400030727@kluniversity.in",
+    phone: "+91 9876543210",
+    dateOfBirth: "2004-05-15",
+    gender: "Female",
+    course: "Computer Science",
+    semester: "3",
+    department: "Computer Science and Engineering",
+    enrollmentDate: "2023-08-01",
+    address: "123 Main Street, Gachibowli",
+    city: "Hyderabad",
+    state: "Telangana",
+    zipCode: "500032",
+    country: "India"
+  };
+
+  // Merge default data with registered user data
+  const studentData = { ...defaultStudentData, ...currentUser };
 
   const handleLogout = () => {
     localStorage.removeItem("userRole");
     localStorage.removeItem("username");
+    localStorage.removeItem("currentUser");
     navigate("/");
   };
 
-  // Updated courses with new names
-  const myCourses = [
-    {
-      id: 1,
-      title: "Database Management System",
-      description: "Learn about database design, SQL, normalization, and database administration.",
-      instructor: "Dr. Sarah Chen",
-      provider: "Amazon",
-      rating: 4,
-      progress: 75
-    },
-    {
-      id: 2,
-      title: "Artificial Intelligence and Machine Learning",
-      description: "Explore AI algorithms, neural networks, and machine learning models.",
-      instructor: "Prof. Michael Rodriguez",
-      provider: "Google",
-      rating: 5,
-      progress: 40
-    },
-    {
-      id: 3,
-      title: "Object Oriented Programming",
-      description: "Master OOP concepts, design patterns, and software development principles.",
-      instructor: "Dr. James Wilson",
-      provider: "Microsoft",
-      rating: 4,
-      progress: 60
-    },
-    {
-      id: 4,
-      title: "Probability and Statistics",
-      description: "Understand statistical analysis, probability theory, and data interpretation.",
-      instructor: "Dr. Emily Parker",
-      provider: "Stanford",
-      rating: 4,
-      progress: 30
-    },
-    {
-      id: 5,
-      title: "Operating System",
-      description: "Learn about process management, memory allocation, and system architecture.",
-      instructor: "Prof. Robert Brown",
-      provider: "MIT",
-      rating: 5,
-      progress: 85
-    },
-    {
-      id: 6,
-      title: "Frontend Development",
-      description: "Build modern web applications using React, HTML, CSS, and JavaScript.",
-      instructor: "Jessica Lee",
-      provider: "Meta",
-      rating: 4,
-      progress: 90
-    },
-    {
-      id: 7,
-      title: "Open Source Engineering",
-      description: "Contribute to open source projects and learn collaborative development.",
-      instructor: "David Kim",
-      provider: "GitHub",
-      rating: 4,
-      progress: 25
-    }
-  ];
+  const toggleProfile = () => {
+    setShowProfile(!showProfile);
+  };
 
-  const availableQuizzes = [
-    { id: 1, title: "JavaScript Basics", dueDate: "2024-12-25", duration: "30 min" },
-    { id: 2, title: "CSS Advanced", dueDate: "2024-12-28", duration: "45 min" },
-    { id: 3, title: "React Fundamentals", dueDate: "2024-12-30", duration: "60 min" }
-  ];
+  // Course Section Navigation
+  const navigateToCourses = () => navigate("/courses");
+  const navigateToCourseMaterials = () => navigate("/course-materials");
+  const navigateToCourseProgress = () => navigate("/course-progress");
+  const navigateToGrades = () => navigate("/grades");
+  const navigateToDiscussionForum = () => navigate("/discussion-forum");
+  const navigateToResources = () => navigate("/resources");
 
-  const assignments = [
-    { id: 1, title: "Project Proposal", dueDate: "2024-12-20", status: "Pending" },
-    { id: 2, title: "Research Paper", dueDate: "2024-12-22", status: "Submitted" },
-    { id: 3, title: "Final Project", dueDate: "2024-12-31", status: "Pending" }
-  ];
+  // Exams Section Navigation
+  const navigateToUpcomingExams = () => navigate("/upcoming-exams");
+  const navigateToQuizResults = () => navigate("/quiz-results");
+  const navigateToExamSchedule = () => navigate("/exam-schedule");
+  const navigateToPracticeTests = () => navigate("/practice-tests");
+
+  // Assignments Section Navigation
+  const navigateToPendingAssignments = () => navigate("/pending-assignments");
 
   return (
     <div className="portal-container">
@@ -100,6 +70,108 @@ export default function Portal() {
           <h1>Learning Management System</h1>
           <div className="user-info">
             <span>Welcome, {username}</span>
+            
+            {/* Profile Icon */}
+            <div className="profile-container">
+              <div className="profile-icon" onClick={toggleProfile}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              
+              {/* Profile Dropdown */}
+              {showProfile && (
+                <div className="profile-dropdown">
+                  <div className="profile-header">
+                    <h3>Student Profile</h3>
+                    <button className="close-profile" onClick={toggleProfile}>×</button>
+                  </div>
+                  
+                  <div className="profile-content">
+                    <div className="profile-section">
+                      <h4>Personal Information</h4>
+                      <div className="profile-details">
+                        <div className="detail-row">
+                          <span className="detail-label">Name:</span>
+                          <span className="detail-value">
+                            {studentData.firstName} {studentData.lastName}
+                          </span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Student ID:</span>
+                          <span className="detail-value">{studentData.studentId}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Email:</span>
+                          <span className="detail-value">{studentData.email}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Phone:</span>
+                          <span className="detail-value">{studentData.phone}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Date of Birth:</span>
+                          <span className="detail-value">{studentData.dateOfBirth}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Gender:</span>
+                          <span className="detail-value">{studentData.gender}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="profile-section">
+                      <h4>Academic Information</h4>
+                      <div className="profile-details">
+                        <div className="detail-row">
+                          <span className="detail-label">Course:</span>
+                          <span className="detail-value">{studentData.course}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Semester:</span>
+                          <span className="detail-value">Semester {studentData.semester}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Department:</span>
+                          <span className="detail-value">{studentData.department}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Enrollment Date:</span>
+                          <span className="detail-value">{studentData.enrollmentDate}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="profile-section">
+                      <h4>Address Information</h4>
+                      <div className="profile-details">
+                        <div className="detail-row">
+                          <span className="detail-label">Address:</span>
+                          <span className="detail-value">{studentData.address}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">City:</span>
+                          <span className="detail-value">{studentData.city}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">State:</span>
+                          <span className="detail-value">{studentData.state}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">ZIP Code:</span>
+                          <span className="detail-value">{studentData.zipCode}</span>
+                        </div>
+                        <div className="detail-row">
+                          <span className="detail-label">Country:</span>
+                          <span className="detail-value">{studentData.country}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <button onClick={handleLogout} className="logout-btn">Logout</button>
           </div>
         </div>
@@ -109,133 +181,45 @@ export default function Portal() {
         {/* Sidebar */}
         <aside className="sidebar">
           <div className="sidebar-section">
-            <h3>Categories</h3>
+            <h3>Course</h3>
             <ul>
-              <li>Programming</li>
-              <li>Database</li>
-              <li>AI/ML</li>
-              <li>Mathematics</li>
-              <li>Systems</li>
-              <li>Development</li>
+              <li onClick={navigateToCourses}>My Courses</li>
+              <li onClick={navigateToCourseMaterials}>Course Materials</li>
+              <li onClick={navigateToCourseProgress}>Course Progress</li>
+              <li onClick={navigateToGrades}>Grades</li>
+              <li onClick={navigateToDiscussionForum}>Discussion Forum</li>
+              <li onClick={navigateToResources}>Resources</li>
             </ul>
           </div>
 
-          {/* Removed Price Section */}
+          <div className="sidebar-section">
+            <h3>Exams</h3>
+            <ul>
+              <li onClick={navigateToUpcomingExams}>Upcoming Exams</li>
+              <li onClick={navigateToQuizResults}>Quiz Results</li>
+              <li onClick={navigateToExamSchedule}>Exam Schedule</li>
+              <li onClick={navigateToPracticeTests}>Practice Tests</li>
+            </ul>
+          </div>
 
           <div className="sidebar-section">
-            <h3>Level</h3>
+            <h3>Assignments</h3>
             <ul>
-              <li>R-mode</li>
-              <li>A-mode</li>
-              <li>E-mode</li>
+              <li onClick={navigateToPendingAssignments}>Pending Assignments</li>
             </ul>
           </div>
         </aside>
 
-        {/* Main Content */}
+        {/* Empty Main Content */}
         <main className="main-content">
-          {/* Welcome Section */}
-          <section className="welcome-section">
-            <h2>Welcome back, {username}!</h2>
-            <p>Continue your learning journey</p>
-          </section>
-
-          {/* My Courses Section */}
-          <section className="courses-section">
-            <div className="section-header">
-              <h3>My Courses</h3>
-              <button className="view-all-btn">View All</button>
-            </div>
-            <div className="courses-grid">
-              {myCourses.map(course => (
-                <div key={course.id} className="course-card">
-                  <div className="course-image">
-                    <div className="course-provider">{course.provider}</div>
-                  </div>
-                  <div className="course-content">
-                    <h4>{course.title}</h4>
-                    <p>{course.description}</p>
-                    <div className="course-instructor">
-                      <span>{course.instructor}</span>
-                    </div>
-                    <div className="course-rating">
-                      {"★".repeat(course.rating)}{"☆".repeat(5 - course.rating)}
-                    </div>
-                    <div className="progress-bar">
-                      <div 
-                        className="progress-fill" 
-                        style={{ width: `${course.progress}%` }}
-                      ></div>
-                    </div>
-                    <div className="progress-text">{course.progress}% Complete</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Quick Stats Section */}
-          <section className="stats-section">
-            <div className="stat-card">
-              <h4>My Courses</h4>
-              <div className="stat-number">7</div>
-            </div>
-            <div className="stat-card">
-              <h4>Assignments</h4>
-              <div className="stat-number">5</div>
-            </div>
-            <div className="stat-card">
-              <h4>Quizzes</h4>
-              <div className="stat-number">8</div>
-            </div>
-            <div className="stat-card">
-              <h4>Progress</h4>
-              <div className="stat-number">58%</div>
-            </div>
-          </section>
-
-          {/* Quizzes and Assignments Section */}
-          <div className="bottom-sections">
-            <section className="quizzes-section">
-              <div className="section-header">
-                <h3>Available Quizzes</h3>
-              </div>
-              <div className="quizzes-list">
-                {availableQuizzes.map(quiz => (
-                  <div key={quiz.id} className="quiz-item">
-                    <h5>{quiz.title}</h5>
-                    <div className="quiz-details">
-                      <span>Due: {quiz.dueDate}</span>
-                      <span>{quiz.duration}</span>
-                    </div>
-                    <button className="start-btn">Start Quiz</button>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="assignments-section">
-              <div className="section-header">
-                <h3>Assignments</h3>
-              </div>
-              <div className="assignments-list">
-                {assignments.map(assignment => (
-                  <div key={assignment.id} className="assignment-item">
-                    <h5>{assignment.title}</h5>
-                    <div className="assignment-details">
-                      <span>Due: {assignment.dueDate}</span>
-                      <span className={`status ${assignment.status.toLowerCase()}`}>
-                        {assignment.status}
-                      </span>
-                    </div>
-                    <button className="submit-btn">Submit</button>
-                  </div>
-                ))}
-              </div>
-            </section>
+          <div className="empty-state">
+            <h2>Select an option from the sidebar</h2>
+            <p>Choose a menu item to view its content</p>
           </div>
         </main>
       </div>
     </div>
   );
 }
+
+export default Portal;

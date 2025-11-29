@@ -32,7 +32,6 @@ export default function Login() {
     localStorage.setItem("userRole", role);
     localStorage.setItem("username", username);
 
-    // Redirect to portal instead of role-specific pages
     navigate("/portal");
   };
 
@@ -40,16 +39,18 @@ export default function Login() {
     alert("Please contact your administrator to reset your password.");
   };
 
+  const handleRegister = () => {
+    navigate("/register");
+  };
+
   return (
     <div className="app-container">
-      {/* Title Bar at Top */}
       <header className="title-bar">
         <div className="title-content">
           <h1>Learning Management System</h1>
         </div>
       </header>
 
-      {/* Main Login Content */}
       <div className="login-container">
         <div className="login-card">
           <h2>Login to Your Account</h2>
@@ -91,10 +92,39 @@ export default function Login() {
             </div>
             <button type="submit">Login</button>
           </form>
+
+          <div 
+            style={{ 
+              textAlign: "center", 
+              marginTop: "20px", 
+              paddingTop: "20px", 
+              borderTop: "1px solid #e0e0e0" 
+            }}
+          >
+            <p style={{ 
+              fontSize: "14px", 
+              color: "#666", 
+              marginBottom: "10px" 
+            }}>
+              Don't have an account?
+            </p>
+            <a 
+              href="#register" 
+              onClick={handleRegister}
+              style={{
+                fontSize: "14px",
+                color: "#3f51b5",
+                textDecoration: "none",
+                cursor: "pointer",
+                fontWeight: "500"
+              }}
+            >
+              Register
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Logout Bar at Bottom */}
       <footer className="logout-bar">
         <div className="footer-content">
           <div className="footer-links">

@@ -1,0 +1,288 @@
+.course-progress-container {
+  padding: 0;
+}
+
+/* Progress Overview */
+.progress-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.overview-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-3px);
+}
+
+.overview-icon {
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+}
+
+.overview-content h3 {
+  margin: 0 0 5px 0;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.overview-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3f51b5;
+}
+
+/* Progress Grid */
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.progress-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.progress-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.progress-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.course-basic-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  color: white;
+}
+
+.course-basic-info p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+.course-provider {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.course-grade {
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+/* Progress Details */
+.progress-details {
+  padding: 20px;
+}
+
+.progress-section {
+  margin-bottom: 20px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.progress-bar {
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* Progress Stats */
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a237e;
+}
+
+/* Deadlines Section */
+.deadlines-section {
+  margin-bottom: 20px;
+}
+
+.deadlines-section h4 {
+  margin: 0 0 10px 0;
+  color: #1a237e;
+  font-size: 16px;
+}
+
+.deadlines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deadline-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.deadline-type {
+  font-size: 14px;
+}
+
+.deadline-title {
+  flex: 1;
+  font-weight: 600;
+  color: #333;
+}
+
+.deadline-date {
+  color: #666;
+}
+
+/* Progress Actions */
+.progress-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.continue-btn, .details-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.continue-btn {
+  background: #3f51b5;
+  color: white;
+}
+
+.continue-btn:hover {
+  background: #5c6bc0;
+}
+
+.details-btn {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+
+.details-btn:hover {
+  background: #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .progress-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .progress-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-card-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .course-grade {
+    align-self: flex-end;
+  }
+  
+  .progress-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .progress-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-overview {
+    grid-template-columns: 1fr;
+  }
+  
+  .overview-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
